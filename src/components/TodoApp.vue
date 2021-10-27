@@ -3,7 +3,7 @@
     <h2 class="text-center mt-5">Vue TodoApp</h2>
 
     <!-- Input what you do -->
-    <div class="d-flex">
+    <div class="d-flex mt-5">
       <input v-model="task" type="text" class="form-control" placeholder="Enter Task ?">
       <button class="btn btn-success rounded-0" @click="submitTask">SUBMIT</button>
     </div>
@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr  v-for="(task, index) in tasks" :key="index">
+        <tr v-for="(task, index) in tasks" :key="index">
           <th>
             <span :class="{'finished': task.status === 'finished'}">
               {{task.name}}
@@ -27,7 +27,10 @@
           </th>
           <td style="width: 120px">
             <span class="pointer" @click="changeStatus(index)" 
-            :class="{'text-danger': task.status === 'to-do', 'text-warning': task.status === 'in-progress', 'text-primary': task.status === 'finished'}">
+            :class="{
+              'btn btn-sm btn-primary': task.status === 'to-do', 
+              'btn btn-sm btn-warning': task.status === 'in-progress', 
+              'btn btn-sm btn-danger': task.status === 'finished'}">
               {{firstCharUpper(task.status)}}
             </span>
           </td>
@@ -38,7 +41,7 @@
           </td>
           <td>
             <div class="text-center" @click="deleteTask(index)">
-              <span class="fa fa-trash "></span>
+              <span class="fa fa-trash pointer"></span>
             </div>
           </td>
         </tr>
@@ -55,6 +58,7 @@ export default {
     msg: String
   },
 
+  // Dfault data app
   data(){
     return{
       task: '', 
@@ -117,11 +121,19 @@ export default {
 
 
 <style scoped>
-.pointer {
-  cursor: pointer;
-}
+  .pointer {
+    cursor: pointer;
+  }
 
-.finished {
-  text-decoration: line-through;
-}
+  .finished {
+    text-decoration: line-through;
+  }
+
+  .fa-pen {
+    color: rgb(61, 161, 106);
+  }
+
+  .fa-trash {
+    color: red;
+  }
 </style>
