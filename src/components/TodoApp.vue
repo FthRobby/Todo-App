@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="text-center mt-5">Vue TodoApp</h2>
+    <h2 class="text-center mt-5">Vue ToDo App</h2>
 
     <!-- Input what you do -->
     <div class="d-flex mt-5">
@@ -121,6 +121,13 @@ export default {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
+
+  *, html {
+    font-family: 'Mitr', sans-serif;
+  }
+
+
   .pointer {
     cursor: pointer;
   }
